@@ -21,7 +21,7 @@ export class CustomersPage implements OnInit {
     this.getUsers().subscribe((res) => {
       console.log('res,', res);
       this.users = res;
-      this.searchedUser= this.users
+      this.searchedUser = this.users;
     });
   }
 
@@ -45,5 +45,13 @@ export class CustomersPage implements OnInit {
         return user.name.toLowerCase().indexOf(text.toLowerCase()) > -1;
       });
     }
+  }
+
+  handleRefresh(event: any) {
+    this.getUsers()
+    setTimeout(() => {
+      // Any calls to load data go here
+      event.target.complete();
+    }, 2000);
   }
 }
