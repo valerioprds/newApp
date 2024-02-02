@@ -2,13 +2,22 @@
   <ion-toolbar color="mycolor">
     <ion-title>customers</ion-title>
   </ion-toolbar>
+
+  <ion-toolbar>
+    <ion-searchbar
+      placeholder="Search"
+      animated
+      (ionChange)="searchCustomer($event)"
+    >
+    </ion-searchbar>
+  </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-list *ngIf="permission">
     <ion-list-header> Recent conversations </ion-list-header>
 
-    <ion-item *ngFor="let user of users">
+    <ion-item *ngFor="let user of searchedUser">
       <ion-avatar slot="start">
         <img src="../../assets/customers-img/{{user.image}}" alt="" />
       </ion-avatar>
@@ -23,5 +32,7 @@
     </ion-item>
   </ion-list>
 
-  <ion-label *ngIf="!permission">You don't have access to see the customers</ion-label>
+  <ion-label *ngIf="!permission"
+    >You don't have access to see the customers</ion-label
+  >
 </ion-content>

@@ -5,27 +5,35 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: 'home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
- 
+
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () =>
+      import('./home/home.module').then((m) => m.HomePageModule),
   },
   {
     path: 'customers',
-    loadChildren: () => import('./customers/customers.module').then( m => m.CustomersPageModule)
+    loadChildren: () =>
+      import('./customers/customers.module').then((m) => m.CustomersPageModule),
   },
   {
     path: 'cities',
-    loadChildren: () => import('./cities/cities.module').then( m => m.CitiesPageModule)
-  }
+    loadChildren: () =>
+      import('./cities/cities.module').then((m) => m.CitiesPageModule),
+  },
+  {
+    path: 'city/:id',
+    loadChildren: () =>
+      import('./city/city.module').then((m) => m.CityPageModule),
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules }),
   ],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}
